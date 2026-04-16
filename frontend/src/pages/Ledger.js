@@ -5,7 +5,7 @@ function Ledger() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:5000/invoices")
+    fetch("https://bhumi-polymers-ewa1.onrender.com/invoices")
       .then(res => res.json())
       .then(data => {
         setInvoices(data);
