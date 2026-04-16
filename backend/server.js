@@ -1,5 +1,4 @@
 const express = require("express");
-const cors = require("cors");
 const mongoose = require("mongoose");
 require("dotenv").config();
 const Invoice = require("./models/Invoice");
@@ -7,7 +6,16 @@ const Customer = require("./models/Customer");
 
 const app = express();
 
-app.use(cors())
+// ✅ BULLETPROOF CORS — manual headers, no cors package needed
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+  if (req.method === "OPTIONS") {
+    return res.sendStatus(200);
+  }
+  next();
+});
 
 app.use(express.json());
 
