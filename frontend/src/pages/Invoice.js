@@ -36,7 +36,7 @@ function Invoice() {
         items,
         totals: { total, sgst, cgst, grand }
       };
-      const response = await fetch("http://localhost:5000/save-invoice", {
+      const response = await fetch("https://bhumi-polymers-ewa1.onrender.com/save-invoice", {, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload)
