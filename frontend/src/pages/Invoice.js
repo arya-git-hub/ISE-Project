@@ -36,7 +36,7 @@ function Invoice() {
         items,
         totals: { total, sgst, cgst, grand }
       };
-      const response = await fetch("https://bhumi-polymers-ewa1.onrender.com/save-invoice", {, {
+      const response = await fetch("https://bhumi-polymers-ewa1.onrender.com/save-invoice", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload)
@@ -56,7 +56,6 @@ function Invoice() {
   return (
     <div style={{ fontFamily: "Arial", padding: "10px" }}>
 
-      {/* PRINT FIX */}
       <style>
         {`
         @media print {
@@ -69,28 +68,22 @@ function Invoice() {
       `}
       </style>
 
-      {/* MAIN BORDER */}
       <div style={{ border: "2px solid black" }}>
 
-        {/* HEADER */}
         <div style={{ textAlign: "center", borderBottom: "1px solid black", padding: "5px" }}>
           <div style={{ fontSize: "18px", fontWeight: "bold" }}>Tax invoice</div>
           <div style={{ fontSize: "11px" }}>ISSUE OF INVOICE UNDER GST 2017</div>
-
           <div style={{ fontSize: "28px", fontWeight: "bold", marginTop: "5px" }}>
             BHUMI POLYMERS
           </div>
-
           <div style={{ fontSize: "13px" }}>
-            ‘Shrikant’ Shastrinagar, Road no 6, Islampur, Sangli. 415409
+            'Shrikant' Shastrinagar, Road no 6, Islampur, Sangli. 415409
           </div>
-
           <div style={{ fontSize: "12px" }}>
             GST No : 27BSOPP5866N1ZL, Ph : 8208460013, 9004007751 Email : bhumipolymer@gmail.com
           </div>
         </div>
 
-        {/* INVOICE ROW */}
         <div style={{ display: "flex", borderBottom: "1px solid black" }}>
           <div style={{ width: "50%", padding: "5px", borderRight: "1px solid black" }}>
             Invoice No : <b>BPI24/25-00492</b>
@@ -100,19 +93,16 @@ function Invoice() {
           </div>
         </div>
 
-        {/* CONSIGNEE */}
         <div style={{ borderBottom: "1px solid black" }}>
           <div style={{ background: "black", color: "white", padding: "5px", fontWeight: "bold" }}>
             Details of consignee
           </div>
-
           <div style={{ display: "flex" }}>
             <div style={{ width: "60%", padding: "8px" }}>
               <p><b>Name :</b> <input value={customer.name} onChange={(e)=>setCustomer({...customer,name:e.target.value})} /></p>
               <p><b>Address :</b> <input value={customer.address} onChange={(e)=>setCustomer({...customer,address:e.target.value})} /></p>
               <p><b>G.S.T.N :</b> NA</p>
             </div>
-
             <div style={{ width: "40%", borderLeft: "1px solid black", padding: "8px" }}>
               <p><b>Ref. No. and date :</b> -</p>
               <p><b>Payment Terms :</b> Advance</p>
@@ -120,7 +110,6 @@ function Invoice() {
           </div>
         </div>
 
-        {/* TABLE */}
         <table width="100%">
           <thead>
             <tr>
@@ -132,17 +121,14 @@ function Invoice() {
               <th style={{ width: "15%" }}>Total (Rs.)</th>
             </tr>
           </thead>
-
           <tbody>
             {items.map((item, i) => (
               <tr key={i}>
                 <td>{i + 1}</td>
-
                 <td><input name="desc" onChange={(e)=>handleChange(i,e)} /></td>
                 <td><input name="hsn" onChange={(e)=>handleChange(i,e)} /></td>
                 <td><input name="rate" onChange={(e)=>handleChange(i,e)} /></td>
                 <td><input name="qty" onChange={(e)=>handleChange(i,e)} /></td>
-
                 <td>{item.total || ""}</td>
               </tr>
             ))}
@@ -151,10 +137,8 @@ function Invoice() {
 
         <button onClick={addRow}>Add Item</button>
 
-        {/* TOTAL + DECLARATION */}
         <table width="100%">
           <tbody>
-
             <tr>
               <td rowSpan="4" style={{ width: "60%" }}>
                 <b>Declaration</b> Certified that the particulars given above are true and correct and the amount indicated represents the price actually charged and that there is no flow of additional consideration directly or indirectly from buyer.
@@ -162,32 +146,13 @@ function Invoice() {
               <td>Total</td>
               <td>{total}</td>
             </tr>
-
-            <tr>
-              <td>SGST (9%)</td>
-              <td>{sgst}</td>
-            </tr>
-
-            <tr>
-              <td>CGST (9%)</td>
-              <td>{cgst}</td>
-            </tr>
-
-            <tr>
-              <td><b>TOTAL (After GST)</b></td>
-              <td><b>{grand}</b></td>
-            </tr>
-
-            <tr>
-              <td colSpan="3">
-                <b>Grand Total Rs. (In Words):</b> {Math.round(grand)} only
-              </td>
-            </tr>
-
+            <tr><td>SGST (9%)</td><td>{sgst}</td></tr>
+            <tr><td>CGST (9%)</td><td>{cgst}</td></tr>
+            <tr><td><b>TOTAL (After GST)</b></td><td><b>{grand}</b></td></tr>
+            <tr><td colSpan="3"><b>Grand Total Rs. (In Words):</b> {Math.round(grand)} only</td></tr>
           </tbody>
         </table>
 
-        {/* BANK */}
         <table width="50%">
           <tbody>
             <tr><td>Bank Name</td><td>HDFC Bank</td></tr>
@@ -197,7 +162,6 @@ function Invoice() {
           </tbody>
         </table>
 
-        {/* SIGN */}
         <div style={{ textAlign: "right", padding: "20px" }}>
           For BHUMI POLYMERS<br /><br /><br />
           Authorized Signatory
