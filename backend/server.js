@@ -7,15 +7,7 @@ const Customer = require("./models/Customer");
 
 const app = express();
 
-app.use(cors({
-  origin: [
-    "https://ise-project-phi.vercel.app",
-    "https://billing-system-indol-six.vercel.app",
-    "http://localhost:3000"
-  ],
-  methods: ["GET", "POST", "PUT", "DELETE"],
-  credentials: true
-}));
+app.use(cors())
 
 app.use(express.json());
 
