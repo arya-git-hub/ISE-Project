@@ -183,4 +183,3 @@ const totalRowStyle = {
 };
 
 export default Ledger;
-
