@@ -17,7 +17,7 @@ function Customers() {
 
   const handleSubmit = async () => {
     try {
-      const response = await fetch("http://localhost:5000/save-customer", {
+      const response = await fetch("https://bhumi-polymers-ewa1.onrender.com/save-customer", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form)
@@ -38,7 +38,6 @@ function Customers() {
   return (
     <div style={{ padding: "20px" }}>
       <h2>Add Customer</h2>
-
       <input
         type="text"
         name="name"
@@ -46,7 +45,6 @@ function Customers() {
         placeholder="Customer Name"
         onChange={handleChange}
       /><br /><br />
-
       <input
         type="text"
         name="address"
@@ -54,7 +52,6 @@ function Customers() {
         placeholder="Address"
         onChange={handleChange}
       /><br /><br />
-
       <input
         type="text"
         name="gst"
@@ -62,7 +59,6 @@ function Customers() {
         placeholder="GST Number"
         onChange={handleChange}
       /><br /><br />
-
       <input
         type="text"
         name="phone"
@@ -70,7 +66,6 @@ function Customers() {
         placeholder="Phone Number"
         onChange={handleChange}
       /><br /><br />
-
       <button onClick={handleSubmit}>Save Customer</button>
     </div>
   );
